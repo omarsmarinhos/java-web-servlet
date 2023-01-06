@@ -4,7 +4,7 @@
 <ul class="list-group">
     <li class="list-group-item active">Menu de opciones</li>
     <li class="list-group-item"><a href="${pageContext.request.contextPath}/productos">Tabla productos</a></li>
-    <li class="list-group-item"><a href="${pageContext.request.contextPath}/usuarios">Tabla productos</a></li>
+    <li class="list-group-item"><a href="${pageContext.request.contextPath}/usuarios">Tabla usuarios</a></li>
     <li class="list-group-item"><a href="${pageContext.request.contextPath}/login.html">Login</a></li>
     <li class="list-group-item"><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
     <li class="list-group-item"><a href="${pageContext.request.contextPath}/carro/ver">Ver carro</a></li>

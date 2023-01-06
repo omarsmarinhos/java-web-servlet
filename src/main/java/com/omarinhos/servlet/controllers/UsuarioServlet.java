@@ -1,6 +1,5 @@
 package com.omarinhos.servlet.controllers;
 
-import com.omarinhos.servlet.models.Producto;
 import com.omarinhos.servlet.models.Usuario;
 import com.omarinhos.servlet.services.*;
 import jakarta.servlet.ServletException;

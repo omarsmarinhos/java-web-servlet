@@ -1,9 +1,11 @@
+com\omarinhos\servlet\controllers\UsuarioFormServlet.class
 com\omarinhos\servlet\filters\LoginFilter.class
 com\omarinhos\servlet\filters\ConexionFilter.class
 com\omarinhos\servlet\models\Carro.class
 com\omarinhos\servlet\services\UsuarioService.class
 com\omarinhos\servlet\repositories\ProductoRepositoryJdbcImpl.class
 com\omarinhos\servlet\services\ProductoServiceJdbcImpl.class
+com\omarinhos\servlet\controllers\UsuarioEliminarServlet.class
 com\omarinhos\servlet\controllers\VerCarroServlet.class
 com\omarinhos\servlet\util\ConexionBaseDatos.class
 com\omarinhos\servlet\repositories\Repository.class
