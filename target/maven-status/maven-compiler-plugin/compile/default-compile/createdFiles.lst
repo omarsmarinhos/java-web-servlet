@@ -8,6 +8,7 @@ com\omarinhos\servlet\controllers\VerCarroServlet.class
 com\omarinhos\servlet\util\ConexionBaseDatos.class
 com\omarinhos\servlet\repositories\Repository.class
 com\omarinhos\servlet\controllers\ActualizarCarroServlet.class
+com\omarinhos\servlet\controllers\UsuarioServlet.class
 com\omarinhos\servlet\models\Producto.class
 com\omarinhos\servlet\models\Categoria.class
 com\omarinhos\servlet\models\ItemCarro.class
