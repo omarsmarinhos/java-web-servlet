@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="_52Atuthentication" />
+        <module name="javaweb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="_51Layout" target="17" />
+      <module name="_52Atuthentication" target="17" />
       <module name="crud" target="17" />
     </bytecodeTargetLevel>
   </component>
