@@ -1,11 +1,12 @@
 package com.omarinhos.servlet.filters;
 
 import com.omarinhos.servlet.services.ServiceJdbcException;
-import com.omarinhos.servlet.util.ConexionBaseDatos;
+import com.omarinhos.servlet.util.ConexionBaseDatosDS;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
+import javax.naming.NamingException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,7 +16,8 @@ public class ConexionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        try (Connection conn = ConexionBaseDatos.getConnection()) {
+        try (Connection conn = ConexionBaseDatosDS.getConnection()) {
+
             if (conn.getAutoCommit()) {
                 conn.setAutoCommit(false);
             }
@@ -29,7 +31,7 @@ public class ConexionFilter implements Filter {
                         .sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 e.printStackTrace();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             e.printStackTrace();
         }
     }

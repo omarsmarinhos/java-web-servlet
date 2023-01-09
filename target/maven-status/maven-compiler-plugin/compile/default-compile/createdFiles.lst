@@ -26,6 +26,7 @@ com\omarinhos\servlet\listeners\AplicacionListener.class
 com\omarinhos\servlet\repositories\UsuarioRepositoryImpl.class
 com\omarinhos\servlet\services\LoginServiceCookieImpl.class
 com\omarinhos\servlet\controllers\LogoutServlet.class
+com\omarinhos\servlet\util\ConexionBaseDatosDS.class
 com\omarinhos\servlet\repositories\UsuarioRepository.class
 com\omarinhos\servlet\services\LoginService.class
 com\omarinhos\servlet\services\ProductoServiceImpl.class
