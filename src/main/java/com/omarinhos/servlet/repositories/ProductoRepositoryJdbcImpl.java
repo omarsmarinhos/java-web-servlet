@@ -1,19 +1,36 @@
 package com.omarinhos.servlet.repositories;
 
+import com.omarinhos.servlet.configs.MysqlConn;
+import com.omarinhos.servlet.configs.Repository;
+import com.omarinhos.servlet.interceptors.Logging;
 import com.omarinhos.servlet.models.Categoria;
 import com.omarinhos.servlet.models.Producto;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.inject.Inject;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-public class ProductoRepositoryJdbcImpl implements Repository<Producto> {
+@Repository
+public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
 
+    @Inject
+    @MysqlConn
     private Connection conn;
+    @Inject
+    private Logger log;
 
-    public ProductoRepositoryJdbcImpl(Connection conn) {
-        this.conn = conn;
+    @PostConstruct
+    public void iniciar() {
+        log.info("iniciando el beans " + this.getClass().getName());
+    }
+
+    @PreDestroy
+    public void destruir() {
+        log.info("destruyendo el beans " + this.getClass().getName());
     }
 
     @Override

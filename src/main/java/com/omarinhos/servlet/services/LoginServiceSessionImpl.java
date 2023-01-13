@@ -1,11 +1,14 @@
 package com.omarinhos.servlet.services;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.Optional;
 
+@ApplicationScoped
 public class LoginServiceSessionImpl implements LoginService{
+
     @Override
     public Optional<String> getUsername(HttpServletRequest req) {
         HttpSession session = req.getSession();

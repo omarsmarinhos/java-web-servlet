@@ -1,8 +1,9 @@
 package com.omarinhos.servlet.controllers;
 
+import com.omarinhos.servlet.configs.ProductoServicePrincipal;
 import com.omarinhos.servlet.models.Producto;
 import com.omarinhos.servlet.services.ProductoService;
-import com.omarinhos.servlet.services.ProductoServiceJdbcImpl;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,16 +11,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet("/productos/eliminar")
 public class ProductoEliminarServlet extends HttpServlet {
 
+    @Inject
+    @ProductoServicePrincipal
+    private ProductoService service;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection conn = (Connection) req.getAttribute("conn");
-        ProductoService service = new ProductoServiceJdbcImpl(conn);
         long id;
         try {
             id = Long.parseLong(req.getParameter("id"));

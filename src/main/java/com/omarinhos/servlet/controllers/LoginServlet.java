@@ -2,22 +2,26 @@ package com.omarinhos.servlet.controllers;
 
 import com.omarinhos.servlet.models.Usuario;
 import com.omarinhos.servlet.services.*;
+import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet({"/login", "/login.html"})
 public class LoginServlet extends HttpServlet {
 
+    @Inject
+    private UsuarioService usuarioService;
+    @Inject
+    private LoginService loginService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LoginService service = new LoginServiceSessionImpl();
-        Optional<String> usernameOptional = service.getUsername(req);
+        Optional<String> usernameOptional = loginService.getUsername(req);
         if (usernameOptional.isPresent()) {
             resp.setContentType("text/html");
             try(PrintWriter out = resp.getWriter()) {
@@ -46,8 +50,6 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        Connection conn = (Connection) req.getAttribute("conn");
-        UsuarioService usuarioService = new UsuarioServiceImpl(conn);
         Optional<Usuario> usuarioOptional = usuarioService.login(username, password);
 
         if (usuarioOptional.isPresent()) {

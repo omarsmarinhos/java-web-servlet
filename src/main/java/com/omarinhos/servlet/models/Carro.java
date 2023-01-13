@@ -1,14 +1,32 @@
 package com.omarinhos.servlet.models;
 
+import com.omarinhos.servlet.configs.CarroCompra;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.inject.Inject;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
-public class Carro {
+@CarroCompra
+public class Carro implements Serializable {
+
     private List<ItemCarro> items;
+    @Inject
+    private transient Logger log;
 
-    public Carro() {
-        this.items = new ArrayList<>();
+    @PostConstruct
+    public void inicializar() {
+        items = new ArrayList<>();
+        log.info("Iniciando el carro compra");
+    }
+
+    @PreDestroy
+    public void destruir() {
+        log.info("Destruyendo el carro compra");
     }
 
     public void addItemCarro(ItemCarro itemCarro) {
@@ -40,7 +58,7 @@ public class Carro {
 
     public void removeProducto(String productoId) {
         Optional<ItemCarro> producto = findProducto(productoId);
-        producto.ifPresent(itemCarro -> items.remove(itemCarro));
+        producto.ifPresent(items::remove);
     }
 
     public void updateCantidad(String productoId, int cantidad) {

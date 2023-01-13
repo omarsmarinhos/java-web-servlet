@@ -1,18 +1,20 @@
 package com.omarinhos.servlet.repositories;
 
+import com.omarinhos.servlet.configs.MysqlConn;
+import com.omarinhos.servlet.configs.Repository;
 import com.omarinhos.servlet.models.Usuario;
+import jakarta.inject.Inject;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository{
-    
+
+    @Inject
+    @MysqlConn
     private Connection conn;
-    
-    public UsuarioRepositoryImpl(Connection conn) {
-        this.conn = conn;
-    }
     
     @Override
     public Usuario porUsername(String username) throws SQLException {

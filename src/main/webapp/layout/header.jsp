@@ -32,7 +32,7 @@
                 <li class="nav-item">
                     <a class="nav-link"
                        href="${pageContext.request.contextPath}/carro/ver">Carro
-                        (${sessionScope.carro.items.size()})</a>
+                        (${carro.items.size()})</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

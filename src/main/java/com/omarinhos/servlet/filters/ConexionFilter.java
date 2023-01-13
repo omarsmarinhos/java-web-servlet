@@ -1,12 +1,12 @@
 package com.omarinhos.servlet.filters;
 
+import com.omarinhos.servlet.configs.MysqlConn;
 import com.omarinhos.servlet.services.ServiceJdbcException;
-import com.omarinhos.servlet.util.ConexionBaseDatosDS;
+import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
-import javax.naming.NamingException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,22 +16,11 @@ public class ConexionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        try (Connection conn = ConexionBaseDatosDS.getConnection()) {
-
-            if (conn.getAutoCommit()) {
-                conn.setAutoCommit(false);
-            }
-            try {
-                servletRequest.setAttribute("conn", conn);
-                filterChain.doFilter(servletRequest, servletResponse);
-                conn.commit();
-            } catch (SQLException | ServiceJdbcException e) {
-                conn.rollback();
-                ((HttpServletResponse) servletResponse)
-                        .sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                e.printStackTrace();
-            }
-        } catch (SQLException | NamingException e) {
+        try {
+            filterChain.doFilter(servletRequest, servletResponse);
+        } catch (ServiceJdbcException e) {
+            ((HttpServletResponse) servletResponse)
+                    .sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
             e.printStackTrace();
         }
     }

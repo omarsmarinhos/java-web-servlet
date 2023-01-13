@@ -1,25 +1,28 @@
 package com.omarinhos.servlet.services;
 
+import com.omarinhos.servlet.configs.ProductoServicePrincipal;
+import com.omarinhos.servlet.configs.Service;
+import com.omarinhos.servlet.interceptors.Logging;
 import com.omarinhos.servlet.models.Categoria;
 import com.omarinhos.servlet.models.Producto;
-import com.omarinhos.servlet.repositories.CategoriaRepositorioImpl;
-import com.omarinhos.servlet.repositories.ProductoRepositoryJdbcImpl;
-import com.omarinhos.servlet.repositories.Repository;
+import com.omarinhos.servlet.repositories.CrudRepository;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@ProductoServicePrincipal
 public class ProductoServiceJdbcImpl implements ProductoService{
 
-    private Repository<Producto> repositoryJdbc;
-    private Repository<Categoria> repositoryCategoria;
+    @Inject
+    private CrudRepository<Producto> repositoryJdbc;
 
-    public ProductoServiceJdbcImpl(Connection connection) {
-        this.repositoryJdbc = new ProductoRepositoryJdbcImpl(connection);
-        this.repositoryCategoria = new CategoriaRepositorioImpl(connection);
-    }
+    @Inject
+    private CrudRepository<Categoria> repositoryCategoria;
+
 
     @Override
     public List<Producto> listar() {

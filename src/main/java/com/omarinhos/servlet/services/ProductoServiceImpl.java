@@ -3,7 +3,6 @@ package com.omarinhos.servlet.services;
 import com.omarinhos.servlet.models.Categoria;
 import com.omarinhos.servlet.models.Producto;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 

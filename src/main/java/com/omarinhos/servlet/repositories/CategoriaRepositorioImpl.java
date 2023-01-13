@@ -1,18 +1,20 @@
 package com.omarinhos.servlet.repositories;
 
+import com.omarinhos.servlet.configs.MysqlConn;
+import com.omarinhos.servlet.configs.Repository;
 import com.omarinhos.servlet.models.Categoria;
+import jakarta.inject.Inject;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriaRepositorioImpl implements Repository<Categoria>{
+@Repository
+public class CategoriaRepositorioImpl implements CrudRepository<Categoria> {
 
+    @Inject
+    @MysqlConn
     private Connection conn;
-
-    public CategoriaRepositorioImpl(Connection conn) {
-        this.conn = conn;
-    }
 
     @Override
     public List<Categoria> listar() throws SQLException {

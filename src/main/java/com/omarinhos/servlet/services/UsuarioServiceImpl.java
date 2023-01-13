@@ -1,21 +1,22 @@
 package com.omarinhos.servlet.services;
 
+import com.omarinhos.servlet.configs.Service;
 import com.omarinhos.servlet.models.Usuario;
 import com.omarinhos.servlet.repositories.UsuarioRepository;
 import com.omarinhos.servlet.repositories.UsuarioRepositoryImpl;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
 
-    private final UsuarioRepository repository;
-
-    public UsuarioServiceImpl(Connection conn) {
-        repository = new UsuarioRepositoryImpl(conn);
-    }
+    @Inject
+    private UsuarioRepository repository;
 
     @Override
     public Optional<Usuario> login(String username, String password) {
