@@ -21,6 +21,7 @@ public class ProducerResources {
     private Logger log;
     @Resource(name = "jdbc/mysqlDB")
     private DataSource ds;
+    
     @Produces
     @RequestScoped
     @MysqlConn
