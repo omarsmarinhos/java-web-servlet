@@ -1,5 +1,7 @@
 package com.omarinhos.servlet.models;
 
+import com.omarinhos.servlet.models.entities.Producto;
+
 import java.util.Objects;
 
 public class ItemCarro {

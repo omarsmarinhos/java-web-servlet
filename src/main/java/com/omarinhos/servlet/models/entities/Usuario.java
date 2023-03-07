@@ -1,7 +1,13 @@
-package com.omarinhos.servlet.models;
+package com.omarinhos.servlet.models.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;

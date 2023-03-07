@@ -2,9 +2,8 @@ package com.omarinhos.servlet.repositories;
 
 import com.omarinhos.servlet.configs.MysqlConn;
 import com.omarinhos.servlet.configs.Repository;
-import com.omarinhos.servlet.interceptors.Logging;
-import com.omarinhos.servlet.models.Categoria;
-import com.omarinhos.servlet.models.Producto;
+import com.omarinhos.servlet.models.entities.Categoria;
+import com.omarinhos.servlet.models.entities.Producto;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
@@ -15,6 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Repository
+@RepositoryJdbc
 public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
 
     @Inject

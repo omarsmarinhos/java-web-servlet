@@ -1,7 +1,7 @@
 package com.omarinhos.servlet.controllers;
 
 import com.omarinhos.servlet.configs.ProductoServicePrincipal;
-import com.omarinhos.servlet.models.Producto;
+import com.omarinhos.servlet.models.entities.Producto;
 import com.omarinhos.servlet.services.ProductoService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;

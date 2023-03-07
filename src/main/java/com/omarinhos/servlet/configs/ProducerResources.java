@@ -1,5 +1,6 @@
 package com.omarinhos.servlet.configs;
 
+import com.omarinhos.servlet.util.JpaUtil;
 import jakarta.annotation.Resource;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
@@ -7,6 +8,7 @@ import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -37,5 +39,18 @@ public class ProducerResources {
     public void close(@Disposes @MysqlConn Connection conn) throws SQLException {
         conn.close();
         log.info("cerrando la conexión mysql");
+    }
+
+    @Produces
+    @RequestScoped
+    private EntityManager beanEntityManager() {
+        return JpaUtil.getEntityManager();
+    }
+
+    public void close(@Disposes EntityManager em) {
+        if (em.isOpen()) {
+            em.close();
+            log.info("cerrando la conexión del EntityManager");
+        }
     }
 }

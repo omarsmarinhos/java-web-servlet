@@ -1,8 +1,7 @@
 package com.omarinhos.servlet.controllers;
 
-import com.omarinhos.servlet.models.Usuario;
+import com.omarinhos.servlet.models.entities.Usuario;
 import com.omarinhos.servlet.services.UsuarioService;
-import com.omarinhos.servlet.services.UsuarioServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -62,11 +60,11 @@ public class UsuarioFormServlet extends HttpServlet {
             errores.put("email", "El email es requerido.");
         }
 
-        long id;
+        Long id;
         try {
-            id = Long.parseLong(req.getParameter("id"));
+            id = Long.valueOf(req.getParameter("id"));
         } catch (NumberFormatException e) {
-            id = 0L;
+            id = null;
         }
 
         Usuario usuario = new Usuario();

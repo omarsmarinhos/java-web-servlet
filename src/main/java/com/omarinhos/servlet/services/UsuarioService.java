@@ -1,6 +1,6 @@
 package com.omarinhos.servlet.services;
 
-import com.omarinhos.servlet.models.Usuario;
+import com.omarinhos.servlet.models.entities.Usuario;
 
 import java.util.List;
 import java.util.Optional;

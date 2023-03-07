@@ -2,7 +2,7 @@ package com.omarinhos.servlet.repositories;
 
 import com.omarinhos.servlet.configs.MysqlConn;
 import com.omarinhos.servlet.configs.Repository;
-import com.omarinhos.servlet.models.Categoria;
+import com.omarinhos.servlet.models.entities.Categoria;
 import jakarta.inject.Inject;
 
 import java.sql.*;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@RepositoryJdbc
 public class CategoriaRepositorioImpl implements CrudRepository<Categoria> {
 
     @Inject

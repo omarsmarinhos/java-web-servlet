@@ -1,7 +1,7 @@
 package com.omarinhos.servlet.services;
 
-import com.omarinhos.servlet.models.Categoria;
-import com.omarinhos.servlet.models.Producto;
+import com.omarinhos.servlet.models.entities.Categoria;
+import com.omarinhos.servlet.models.entities.Producto;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,8 +1,7 @@
 package com.omarinhos.servlet.controllers;
 
-import com.omarinhos.servlet.models.Usuario;
+import com.omarinhos.servlet.models.entities.Usuario;
 import com.omarinhos.servlet.services.UsuarioService;
-import com.omarinhos.servlet.services.UsuarioServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet("/usuarios/eliminar")

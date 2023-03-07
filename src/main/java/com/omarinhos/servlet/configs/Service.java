@@ -11,7 +11,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@TransactionalJdbc
 @ApplicationScoped
 @Logging
 @Stereotype

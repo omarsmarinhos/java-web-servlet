@@ -1,6 +1,6 @@
 package com.omarinhos.servlet.controllers;
 
-import com.omarinhos.servlet.models.Usuario;
+import com.omarinhos.servlet.models.entities.Usuario;
 import com.omarinhos.servlet.services.*;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;

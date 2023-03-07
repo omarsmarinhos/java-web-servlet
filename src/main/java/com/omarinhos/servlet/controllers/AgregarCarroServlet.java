@@ -3,7 +3,7 @@ package com.omarinhos.servlet.controllers;
 import com.omarinhos.servlet.configs.ProductoServicePrincipal;
 import com.omarinhos.servlet.models.Carro;
 import com.omarinhos.servlet.models.ItemCarro;
-import com.omarinhos.servlet.models.Producto;
+import com.omarinhos.servlet.models.entities.Producto;
 import com.omarinhos.servlet.services.ProductoService;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
@@ -18,6 +18,7 @@ public class AgregarCarroServlet extends HttpServlet {
 
     @Inject
     private Carro carro;
+
     @Inject
     @ProductoServicePrincipal
     private ProductoService service;

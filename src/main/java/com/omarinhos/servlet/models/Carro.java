@@ -12,9 +12,10 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @CarroCompra
-public class Carro implements Serializable {
+public class Carro implements Serializable{
 
     private List<ItemCarro> items;
+
     @Inject
     private transient Logger log;
 

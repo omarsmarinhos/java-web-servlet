@@ -1,21 +1,21 @@
 package com.omarinhos.servlet.services;
 
 import com.omarinhos.servlet.configs.Service;
-import com.omarinhos.servlet.models.Usuario;
+import com.omarinhos.servlet.interceptors.TransactionalJpa;
+import com.omarinhos.servlet.models.entities.Usuario;
+import com.omarinhos.servlet.repositories.RepositoryJpa;
 import com.omarinhos.servlet.repositories.UsuarioRepository;
-import com.omarinhos.servlet.repositories.UsuarioRepositoryImpl;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@TransactionalJpa
 public class UsuarioServiceImpl implements UsuarioService{
 
     @Inject
+    @RepositoryJpa
     private UsuarioRepository repository;
 
     @Override
@@ -23,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService{
         try {
             return Optional.ofNullable(repository.porUsername(username))
                     .filter(usuario -> usuario.getPassword().equals(password));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
@@ -32,7 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Optional<Usuario> porId(Long id) {
         try {
             return Optional.ofNullable(repository.porId(id));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
@@ -41,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void guardar(Usuario usuario) {
         try {
             repository.guardar(usuario);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
@@ -50,7 +50,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void eliminar(Long id) {
         try {
             repository.eliminar(id);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
@@ -59,7 +59,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public List<Usuario> listar() {
         try {
             return repository.listar();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
     }
